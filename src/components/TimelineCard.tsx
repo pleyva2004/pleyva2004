@@ -79,7 +79,7 @@ const TimelineCard: React.FC<TimelineCardProps> = ({ item, index }) => {
       </div>
 
       {/* Date */}
-      <div className={`w-5/12 ${item.position === 'right' ? 'mr-8 text-right' : 'ml-8'}`}>
+      <div className={`w-5/12 ${item.position === 'right' ? 'mr-12 text-right' : 'ml-12'}`}>
         <span className="text-gray-400 text-sm font-medium">
           {item.period}
         </span>

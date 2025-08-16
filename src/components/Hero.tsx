@@ -1,6 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const Hero: React.FC = () => {
+  // Simple typewriter effect
+  const [text, setText] = useState('');
+  const fullText = "AI is the great equalizer. Build what you wish existed.";
+  
+  useEffect(() => {
+    let i = 0;
+    const timer = setInterval(() => {
+      if (i <= fullText.length) {
+        setText(fullText.slice(0, i));
+        i++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 50);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="min-h-screen flex items-center justify-center px-6 pt-20">
       <div className="text-center max-w-2xl mx-auto">
@@ -16,16 +34,22 @@ const Hero: React.FC = () => {
         {/* Quote Card */}
         <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl">
           <blockquote className="text-gray-800 text-base italic leading-relaxed">
-            "Build what you wish existed. Stay curious. Keep it real."
+            {text}
+            {text.length < fullText.length && <span className="animate-pulse ml-1">|</span>}
           </blockquote>
         </div>
 
         {/* Scroll indicator */}
-        <div className="mt-12 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full mx-auto flex justify-center">
+        <motion.div 
+          className="mt-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full mx-auto flex justify-center animate-bounce">
             <div className="w-1 h-3 bg-white/60 rounded-full mt-2"></div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

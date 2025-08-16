@@ -14,7 +14,7 @@ const Timeline: React.FC = () => {
         {/* Timeline Container */}
         <div className="relative">
           {/* Vertical Line - calculated height based on items */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-gray-600" style={{ height: `${timelineData.length * 16 - 4}rem` }}></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-gray-600" style={{ height: `${timelineData.length * 18 + 2 }rem` }}></div>
 
           {/* Timeline Items */}
           <div className="space-y-0">
