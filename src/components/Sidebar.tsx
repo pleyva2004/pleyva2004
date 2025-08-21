@@ -60,7 +60,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onNetworkToggle, onChatToggle }) => {
           
           {/* Chat Button */}
           <button 
-            onClick={() => window.open('https://chatbase.co', '_blank')}
+            onClick={onChatToggle}
             className="w-10 h-10 rounded-full bg-transparent flex items-center justify-center text-white hover:bg-white/10 transition-colors"
           >
             <MessageCircle size={18} />
