@@ -15,39 +15,13 @@ interface ChatInterfaceProps {
   onClose: () => void;
 }
 
-const mockResponses: Record<string, string> = {
-  // Professional Experience
-  'experience': 'I have interned at Apple as an AI Product & Strategy Intern, Radical AI as an AI Engineer, Caterpillar as a Software Engineer, and NJIT as a Research Assistant. Each role has given me diverse experience in AI, product development, and software engineering.',
-  'apple': 'At Apple, I led a team of 3 interns to build an MVP for Agentic Payment flow experience. I prototyped agentic workflows combining LLM-based product recommendations with Apple Pay checkout using TypeScript and Model Context Protocol.',
-  'radical ai': 'At Radical AI, I integrated modern LLMs into web applications using Python, working with OpenAI\'s GPT-4o and Google\'s Gemini. I developed Rex web app that helped students improve their Calculus grades to upwards of 93%.',
-  'caterpillar': 'At Caterpillar, I retrieved engineer data via Python scripts using Azure DevOps API and GitHub REST API. I analyzed software development efficiency using Generative AI and optimized SDLC by visualizing data in PowerBI.',
-  
-  // Skills & Technical
-  'skills': 'My core skills include TypeScript, Python, React, AI/ML, data analysis, web development, APIs, and product strategy. I\'m passionate about building AI-powered applications and data-driven solutions.',
-  'python': 'I use Python extensively for AI/ML projects, data analysis, web scraping, and API development. I\'ve worked with frameworks like FastAPI, pandas, and various AI libraries.',
-  'typescript': 'TypeScript is my go-to for frontend development. I\'ve built React applications, worked with complex type systems, and integrated TypeScript with AI workflows at Apple.',
-  'ai': 'I\'m deeply interested in AI/ML, having worked with LLMs, built agentic workflows, and created AI-powered educational tools. I stay current with the latest AI developments and love exploring new possibilities.',
-  
-  // Projects
-  'projects': 'I\'ve built several projects including this portfolio website, the Rex learning app at Radical AI, an Apple Pay MVP with agentic workflows, and various data analysis projects. Each project showcases different aspects of my technical skills.',
-  'portfolio': 'This portfolio website is built with React, TypeScript, Tailwind CSS, and Framer Motion. It features a responsive design, timeline component, and will soon include an interactive network graph of my professional connections.',
-  'rex': 'Rex was a web application I developed at Radical AI that used LLMs to help students with Calculus and Pre-Calculus. The app achieved impressive results, helping students improve their grades to 93% or higher.',
-  
-  // Education & Goals
-  'education': 'I\'m studying Computer Science at NJIT, where I\'ve taken courses in calculus, data structures, algorithms, and more. I also work as a Research Assistant focusing on data analysis and FinTech.',
-  'goals': 'I\'m passionate about building AI-powered products that solve real problems. I want to continue working at the intersection of AI, product development, and user experience to create meaningful impact.',
-  'contact': 'Feel free to reach out! You can find my contact information in the Contact section below, or connect with me through the social links on this site.',
-  
-  // Default responses
-  'hello': 'Hi there! I\'m Pablo\'s AI assistant. I can tell you about his experience, skills, projects, and background. What would you like to know?',
-  'default': 'That\'s an interesting question! I can tell you about Pablo\'s experience at Apple, Radical AI, Caterpillar, and NJIT, his technical skills, projects he\'s built, or his career goals. What specifically interests you?'
-};
+// Mock responses removed - now using real API
 
 const quickReplies = [
-  'Tell me about your experience',
-  'What skills do you have?',
-  'Show me your projects',
-  'What are your goals?'
+  'Tell me about Pablo\'s experience',
+  'What skills does Pablo have?',
+  'Show me Pablo\'s projects',
+  'What are Pablo\'s goals?'
 ];
 
 const ChatInterface: React.FC<ChatInterfaceProps> = ({ isVisible, onClose }) => {
@@ -62,8 +36,8 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isVisible, onClose }) => 
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [userColor, setUserColor] = useState<string>(() => {
-    // Load saved color from localStorage or default to white
-    return localStorage.getItem('chatUserColor') || 'white';
+    // Load saved color from localStorage or default to brown
+    return localStorage.getItem('chatUserColor') || 'brown';
   });
   
   // Window state
@@ -115,7 +89,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isVisible, onClose }) => 
     'brown': '#8b4513',
     'darkish brown': '#654321',
     'dark brown': '#654321',
-    'white': '#ffffff',
     'black': '#000000',
     'gray': '#6b7280',
     'grey': '#6b7280'
@@ -223,22 +196,31 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isVisible, onClose }) => 
     }
   }, [isDragging, isResizing, dragStart, resizeStart, windowSize.width, windowSize.height]);
 
-  // Future API integration point
+  // API configuration
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+  // Real API integration
   const sendMessageToAPI = async (message: string): Promise<string> => {
-    // This is where you'll integrate with your RAG backend
-    // For now, using mock responses
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API delay
-    
-    const lowercaseMessage = message.toLowerCase();
-    
-    // Find matching response
-    for (const [key, response] of Object.entries(mockResponses)) {
-      if (lowercaseMessage.includes(key)) {
-        return response;
+    try {
+      const response = await fetch(`${API_URL}/chat`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+
+      const data = await response.json();
+      console.log('API Response:', data);
+      return data.message || "Sorry, I couldn't process that request.";
+    } catch (error) {
+      console.error('API Error:', error);
+      return "Sorry, I'm having trouble connecting right now. Please try again.";
     }
-    
-    return mockResponses.default;
   };
 
   const handleSendMessage = async (text: string) => {
@@ -388,7 +370,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isVisible, onClose }) => 
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors backdrop-blur-sm"
+            className="w-8 h-8 rounded-full bg-red-500/80 hover:bg-red-600/90 flex items-center justify-center text-white transition-colors backdrop-blur-sm border border-red-400/50 shadow-lg"
           >
             <X size={16} />
           </button>
@@ -416,23 +398,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isVisible, onClose }) => 
                     }}
                   >
                     <div className="text-sm leading-relaxed">
-                      <ReactMarkdown
-                        components={{
-                          h1: ({node, ...props}) => <h1 className="text-lg font-bold mb-3 mt-2" {...props} />,
-                          h2: ({node, ...props}) => <h2 className="text-base font-bold mb-2 mt-3" {...props} />,
-                          h3: ({node, ...props}) => <h3 className="text-sm font-semibold mb-2 mt-2" {...props} />,
-                          ul: ({node, ...props}) => <ul className="list-disc list-inside space-y-1 mb-3 ml-2" {...props} />,
-                          ol: ({node, ...props}) => <ol className="list-decimal list-inside space-y-1 mb-3 ml-2" {...props} />,
-                          li: ({node, ...props}) => <li className="ml-2" {...props} />,
-                          p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
-                          strong: ({node, ...props}) => <strong className="font-semibold" {...props} />,
-                          em: ({node, ...props}) => <em className="italic" {...props} />,
-                          code: ({node, ...props}) => <code className="bg-black/20 px-1 py-0.5 rounded text-xs font-mono" {...props} />,
-                          pre: ({node, ...props}) => <pre className="bg-black/20 p-2 rounded mt-2 mb-2 text-xs font-mono overflow-x-auto" {...props} />
-                        }}
-                      >
-                        {message.text}
-                      </ReactMarkdown>
+                      {message.text}
                     </div>
                   </div>
                 </div>

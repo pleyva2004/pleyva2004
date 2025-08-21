@@ -1,39 +1,24 @@
 {
-  "name": "pablo-leyva-portfolio",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "homepage": "https://pleyva2004.github.io",
+  "name": "pleyva-portfolio-monorepo",
+  "version": "1.0.0",
+  "description": "Pablo Leyva's portfolio with AI agent",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist --dotfiles"
+    "predeploy": "cd frontend && npm run build",
+    "deploy": "gh-pages -d frontend/dist",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && python main.py",
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "cd backend && pip install -r requirements.txt"
   },
   "dependencies": {
-    "framer-motion": "^12.23.12",
-    "lucide-react": "^0.263.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-markdown": "^10.1.0",
-    "reactflow": "^11.11.4"
+    "gh-pages": "^6.1.1"
   },
-  "devDependencies": {
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "@vitejs/plugin-react": "^4.0.3",
-    "autoprefixer": "^10.4.14",
-    "eslint": "^8.45.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
-    "gh-pages": "^6.3.0",
-    "postcss": "^8.4.27",
-    "tailwindcss": "^3.3.3",
-    "typescript": "^5.0.2",
-    "vite": "^7.1.2"
-  }
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pleyva2004/pleyva2004.github.io.git"
+  },
+  "keywords": ["portfolio", "ai-agent", "react", "python"],
+  "author": "Pablo Leyva",
+  "license": "MIT"
 }
