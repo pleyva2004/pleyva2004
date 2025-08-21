@@ -1,7 +1,12 @@
 import React from 'react';
-import { Home, Share2 } from 'lucide-react';
+import { Home, Share2, MessageCircle } from 'lucide-react';
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  onNetworkToggle: () => void;
+  onChatToggle: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ onNetworkToggle, onChatToggle }) => {
   return (
     <>
       {/* Desktop Sidebar - Fixed left position */}
@@ -14,13 +19,23 @@ const Sidebar: React.FC = () => {
           >
             <Home size={20} />
           </button>
-          
-          {/* Share/Network Button */}
+
+          {/* Chat Button */}
           <button 
+            onClick={onChatToggle}
+            className="w-12 h-12 rounded-full bg-transparent flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+          >
+            <MessageCircle size={20} />
+          </button>
+          
+          {/* Network Button */}
+          <button 
+            onClick={onNetworkToggle}
             className="w-12 h-12 rounded-full bg-transparent flex items-center justify-center text-white hover:bg-white/10 transition-colors"
           >
             <Share2 size={20} />
           </button>
+          
         </div>
       </div>
 
@@ -37,9 +52,18 @@ const Sidebar: React.FC = () => {
           
           {/* Share/Network Button */}
           <button 
+            onClick={onNetworkToggle}
             className="w-10 h-10 rounded-full bg-transparent flex items-center justify-center text-white hover:bg-white/10 transition-colors"
           >
             <Share2 size={18} />
+          </button>
+          
+          {/* Chat Button */}
+          <button 
+            onClick={onChatToggle}
+            className="w-10 h-10 rounded-full bg-transparent flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+          >
+            <MessageCircle size={18} />
           </button>
         </div>
       </div>

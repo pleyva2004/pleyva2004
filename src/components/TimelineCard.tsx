@@ -9,6 +9,7 @@ interface TimelineCardProps {
 
 const TimelineCard: React.FC<TimelineCardProps> = ({ item, index }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const desktopCardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,6 +25,10 @@ const TimelineCard: React.FC<TimelineCardProps> = ({ item, index }) => {
 
     if (cardRef.current) {
       observer.observe(cardRef.current);
+    }
+    
+    if (desktopCardRef.current) {
+      observer.observe(desktopCardRef.current);
     }
 
     return () => observer.disconnect();
@@ -91,6 +96,7 @@ const TimelineCard: React.FC<TimelineCardProps> = ({ item, index }) => {
       <div className={`hidden md:flex items-center mb-16 opacity-0 transform translate-y-8 transition-all duration-700 ease-out ${
         item.position === 'right' ? 'flex-row-reverse' : ''
       }`}
+           ref={desktopCardRef}
            style={{ animationDelay: `${index * 200}ms` }}>
         
         {/* Desktop Card */}
