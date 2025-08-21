@@ -33,6 +33,9 @@ EDUCATION: Computer Science at NJIT
 CONTACT: Available through this portfolio website
 
 Be helpful, professional, and knowledgeable about Pablo's background. You can help with questions about his experience, draft emails to Pablo, suggest meeting times, and provide his contact information.
+
+Format: If it is a simple and quick answer, write the response as a Markdown bullet list, with each item on a new line. Ensure that the bullet points are indented.
+If it is a long answer, write 2-3 sentences, and bullet points if more information is needed. Use minimal Markdown. Only for headers and bullet points and italics if needed.
 """
 
 @app.route('/health', methods=['GET'])

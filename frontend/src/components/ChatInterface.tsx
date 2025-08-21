@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send} from 'lucide-react';
+import { X, Send } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
 interface Message {
@@ -67,7 +67,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isVisible, onClose }) => 
     }
   }, [inputText]);
 
-  // Common color names and their CSS values
+  // Essential color names and their CSS values
   const colorMap: Record<string, string> = {
     'red': '#ef4444',
     'blue': '#3b82f6',
@@ -76,56 +76,26 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isVisible, onClose }) => 
     'purple': '#8b5cf6',
     'pink': '#ec4899',
     'orange': '#f97316',
-    'teal': '#14b8a6',
-    'cyan': '#06b6d4',
-    'lime': '#65a30d',
-    'emerald': '#059669',
-    'violet': '#7c3aed',
-    'fuchsia': '#d946ef',
-    'rose': '#f43f5e',
-    'indigo': '#6366f1',
-    'sky': '#0ea5e9',
-    'amber': '#f59e0b',
     'brown': '#8b4513',
-    'darkish brown': '#654321',
-    'dark brown': '#654321',
+    'white': '#ffffff',
     'black': '#000000',
-    'gray': '#6b7280',
-    'grey': '#6b7280'
+    'gray': '#6b7280'
   };
 
   const isColorCommand = (text: string): string | null => {
     const lowerText = text.toLowerCase().trim();
     
-    // Check if it's just a color name
-    if (colorMap[lowerText]) {
-      return colorMap[lowerText];
-    }
+    // Direct color match
+    if (colorMap[lowerText]) return colorMap[lowerText];
     
-    // Check if it's a hex color
-    if (/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(lowerText)) {
-      return lowerText;
-    }
+    // Hex color match
+    if (/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(lowerText)) return lowerText;
     
-    // Check if it starts with common color phrases
-    const colorPhrases = [
-      'set color to ',
-      'change color to ',
-      'use color ',
-      'my color is ',
-      'color: '
-    ];
-    
-    for (const phrase of colorPhrases) {
-      if (lowerText.startsWith(phrase)) {
-        const colorName = lowerText.replace(phrase, '').trim();
-        if (colorMap[colorName]) {
-          return colorMap[colorName];
-        }
-        if (/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(colorName)) {
-          return colorName;
-        }
-      }
+    // Color phrase match
+    const colorMatch = lowerText.match(/(?:set color to |change color to |use color |my color is |color: )(.+)/);
+    if (colorMatch) {
+      const colorName = colorMatch[1].trim();
+      return colorMap[colorName] || (/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(colorName) ? colorName : null);
     }
     
     return null;
@@ -215,7 +185,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isVisible, onClose }) => 
       }
 
       const data = await response.json();
-      console.log('API Response:', data);
       return data.message || "Sorry, I couldn't process that request.";
     } catch (error) {
       console.error('API Error:', error);
@@ -228,35 +197,12 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isVisible, onClose }) => 
 
     // Check if this is a help command
     if (text.toLowerCase().trim() === '\\help') {
-      const userMessage: Message = {
-        id: Date.now().toString(),
-        text: text,
-        sender: 'user',
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, userMessage]);
+      const helpText = `## SETTINGS\n- Change text color: Type a color name\n- Resize window: Drag bottom-right corner\n- Move window: Drag header\n\n## FUNCTIONS\n- Ask about Pablo's experience\n- Inquire about technical skills\n- Learn about projects\n\n## ACTIONS\n- Write an email to Pablo\n- Set up a meeting\n- Provide contact information`;
       
-      const helpMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        text: `## SETTINGS
-- Change text color: Type a color name (red, blue, green, etc.) 
-- Resize window: Drag the triangular handle in bottom-right corner
-- Move window: Click and drag the header bar
-
-## FUNCTIONS
-- Ask about Pablo's experience
-- Inquire about technical skills
-- Learn about projects
-- Get information about education and career goals
-
-## ACTIONS
-- Write an email to Pablo
-- Set up a meeting with Pablo
-- Provide contact information`,
-        sender: 'bot',
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, helpMessage]);
+      setMessages(prev => [...prev, 
+        { id: Date.now().toString(), text, sender: 'user', timestamp: new Date() },
+        { id: (Date.now() + 1).toString(), text: helpText, sender: 'bot', timestamp: new Date() }
+      ]);
       setInputText('');
       return;
     }
@@ -379,31 +325,52 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isVisible, onClose }) => 
         {/* Messages */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           <AnimatePresence>
-            {messages.map((message) => (
-              <motion.div
-                key={message.id}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                <div className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'} max-w-[80%]`}>
-                  <div 
-                    className={`rounded-lg p-3 ${message.sender === 'user' ? '' : 'border border-black'}`}
-                    style={message.sender === 'user' ? {
-                      backgroundColor: userColor,
-                      color: getTextColor(userColor)
-                    } : {
-                      backgroundColor: '#374151',
-                      color: 'white'
-                    }}
-                  >
-                    <div className="text-sm leading-relaxed">
-                      {message.text}
+            {messages.map((message) => {
+              const isUser = message.sender === 'user';
+              const messageStyle = isUser ? {
+                backgroundColor: userColor,
+                color: getTextColor(userColor)
+              } : {
+                backgroundColor: '#374151',
+                color: 'white'
+              };
+
+              return (
+                <motion.div
+                  key={message.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div className={`flex ${isUser ? 'justify-end' : 'justify-start'} max-w-[80%]`}>
+                    <div 
+                      className={`rounded-lg p-3 ${!isUser ? 'border border-black' : ''}`}
+                      style={messageStyle}
+                    >
+                      <div className="text-sm leading-relaxed">
+                        <ReactMarkdown
+                          components={{
+                            h1: ({node, ...props}) => <h1 className="text-lg font-bold mb-3 mt-2" {...props} />,
+                            h2: ({node, ...props}) => <h2 className="text-base font-bold mb-2 mt-3" {...props} />,
+                            h3: ({node, ...props}) => <h3 className="text-sm font-semibold mb-2 mt-2" {...props} />,
+                            ul: ({node, ...props}) => <ul className="list-disc list-inside space-y-1 mb-3 ml-2" {...props} />,
+                            ol: ({node, ...props}) => <ol className="list-decimal list-inside space-y-1 mb-3 ml-2" {...props} />,
+                            li: ({node, ...props}) => <li className="ml-2" {...props} />,
+                            p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
+                            strong: ({node, ...props}) => <strong className="font-semibold" {...props} />,
+                            em: ({node, ...props}) => <em className="italic" {...props} />,
+                            code: ({node, ...props}) => <code className="bg-black/20 px-1 py-0.5 rounded text-xs font-mono" {...props} />,
+                            pre: ({node, ...props}) => <pre className="bg-black/20 p-2 rounded mt-2 mb-2 text-xs font-mono overflow-x-auto" {...props} />
+                          }}
+                        >
+                          {message.text}
+                        </ReactMarkdown>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
 
           {/* Typing indicator */}
