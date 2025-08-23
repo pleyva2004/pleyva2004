@@ -1,18 +1,31 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-import openai
+import uvicorn
+
+from fastapi import FastAPI
+from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
+
+from graph import build_graph
+
+from openai import OpenAI
 import os
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
 
-app = Flask(__name__)
-CORS(app)  # Enable CORS for GitHub Pages frontend
+app = FastAPI(title="Pablo Leyva Portfolio API", version="1.0.0")
 
-# Set OpenAI API key
-openai.api_key = os.getenv('OPENAI_API_KEY')
-print(openai.api_key)
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Configure for GitHub Pages frontend
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Initialize OpenAI client
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 # Pablo's information for the system prompt
 PABLO_INFO = """
@@ -38,37 +51,26 @@ Format: If it is a simple and quick answer, write the response as a Markdown bul
 If it is a long answer, write 2-3 sentences, and bullet points if more information is needed. Use minimal Markdown. Only for headers and bullet points and italics if needed.
 """
 
-@app.route('/health', methods=['GET'])
-def health():
-    return jsonify({"status": "healthy"})
+# Pydantic models
+class ChatRequest(BaseModel):
+    message: str
 
-@app.route('/chat', methods=['POST'])
-def chat():
-    try:
-        data = request.json
-        user_message = data.get('message', '')
-        
-        if not user_message:
-            return jsonify({"error": "No message provided"}), 400
-        
-        # Create chat completion using OpenAI
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": PABLO_INFO},
-                {"role": "user", "content": user_message}
-            ],
-            max_tokens=500,
-            temperature=0.7
-        )
-        
-        ai_response = response.choices[0].message.content
-        return jsonify({"message": ai_response})
-        
-    except Exception as e:
-        print(f"Error: {e}")
-        return jsonify({"error": "Sorry, I'm having trouble right now. Please try again."}), 500
+class ChatResponse(BaseModel):
+    message: str
 
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+graph = build_graph()
+
+class AskRequest(BaseModel):
+    question: str
+
+class AskResponse(BaseModel):
+    answer: str
+
+@app.post("/ask", response_model=AskResponse)
+def ask(req: AskRequest):
+    state = {"question": req.question, "context": [], "answer": None}
+    out = graph.invoke(state)
+    return AskResponse(answer=out["answer"])
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=8000)
