@@ -44,10 +44,10 @@ const mockResponses: Record<string, string> = {
 };
 
 const quickReplies = [
-  'Tell me about your experience',
-  'What skills do you have?',
-  'Show me your projects',
-  'What are your goals?'
+  'Tell me about Pablo\'s experience',
+  'What skills does Pablo have?',
+  'Show me Pablo\'s projects',
+  'What are Pablo\'s goals?'
 ];
 
 const ChatInterface: React.FC<ChatInterfaceProps> = ({ isVisible, onClose }) => {
