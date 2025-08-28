@@ -6,12 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from graph import build_graph
 
-from openai import OpenAI
-import os
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv()
+from utils import _llm
 
 app = FastAPI(title="Pablo Leyva Portfolio API", version="1.0.0")
 
@@ -24,8 +19,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize OpenAI client
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+llm_client = _llm()
 
 # Pablo's information for the system prompt
 PABLO_INFO = """
@@ -53,7 +47,7 @@ If it is a long answer, write 2-3 sentences, and bullet points if more informati
 
 # Pydantic models
 class ChatRequest(BaseModel):
-    message: str
+    message: str    
 
 class ChatResponse(BaseModel):
     message: str
@@ -68,9 +62,29 @@ class AskResponse(BaseModel):
 
 @app.post("/ask", response_model=AskResponse)
 def ask(req: AskRequest):
-    state = {"question": req.question, "context": [], "answer": None}
-    out = graph.invoke(state)
-    return AskResponse(answer=out["answer"])
+
+    print("/ask called")
+    print("--------------------------------")
+    print(req.question)
+    print("--------------------------------")
+
+    # state = {"question": req.question, "context": [], "answer": None}
+    prompt = f"""
+    You are Pablo Leyva's AI assistant. Here's information about Pablo:
+
+    {PABLO_INFO}
+
+    Question: {req.question}
+
+    Answer:
+    """
+
+    out = llm_client(prompt)
+
+    print(out)
+    print("--------------------------------")
+
+    return AskResponse(answer=out)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
