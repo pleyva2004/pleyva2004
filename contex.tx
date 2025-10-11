@@ -1,0 +1,119 @@
+===============================
+GitHub Profile Report: pleyva2004
+===============================
+
+1. Basic Profile Information
+-----------------------------
+- **Username**: pleyva2004  
+- **Name**: Pablo Leyva  
+- **Public repository count**: 44 (as shown on profile)  
+- **Followers**: 5  
+- **Following**: 6  
+- **Stars received**: 0 (profile shows “0 stars”)  
+- **Projects / Packages**: 0 Projects, 0 Packages (per profile)  
+- **External links**:
+  • Personal website / GitHub Pages: pleyva2004.github.io :contentReference[oaicite:0]{index=0}  
+  • LinkedIn: “Pablo Leyva” (profile shows “AI Solutions | Pay Intern | B.S. in Applied Mathematics and Data Science”) :contentReference[oaicite:1]{index=1}  
+
+---
+
+2. Personal Website & External Activity
+-----------------------------------------
+- The personal website (GitHub Pages) shows that Pablo works or has experience in **AI / Product / Strategy** related roles (e.g. an AI Product & Strategy Intern at Apple) and other internships. :contentReference[oaicite:2]{index=2}  
+- The website lists timeline entries such as:
+  * May 2025 – Aug 2025: AI Product & Strategy Intern at Apple  
+  * Aug 2024 – Oct 2024: AI Engineer Intern at Radical AI  
+  * May 2024 – Aug 2024: Software Engineering Intern (Caterpillar Inc.)  
+  * Oct 2023 – Apr 2024: Research Assistant in Data Analysis / FinTech at NJIT  
+  (This suggests a mix of industry and research roles) :contentReference[oaicite:3]{index=3}  
+- The site also gives contact information including email (pleyva2004@gmail.com) :contentReference[oaicite:4]{index=4}  
+
+- On Devpost, the profile states skills and interests: Python, C++, Java, Docker, PyTorch, TensorFlow, Keras, Scikit‑Learn, Pandas, NumPy, MATLAB, etc. :contentReference[oaicite:5]{index=5}  
+- The Devpost page also shows “Interests” in Blockchain, Fintech, Machine Learning / AI. :contentReference[oaicite:6]{index=6}  
+
+---
+
+3. Technical & Project Profile (Themes, Languages, Domains)
+-------------------------------------------------------------
+From both GitHub and external sources, these are the observed technical domains and project interests:
+
+- **Languages & tech stack**:
+  • Python  
+  • C++  
+  • Java  
+  • Docker  
+  • Machine learning frameworks: PyTorch, TensorFlow, Keras  
+  • Data / numeric libraries: Pandas, NumPy  
+  • MATLAB  
+  • Web / frontend (for the personal site)  
+  • Use of GitHub REST API, Azure DevOps API (from internship description) :contentReference[oaicite:7]{index=7}  
+
+- **Project domains / themes**:
+  • Email / message / signature parsing / management (e.g. the “Clara” repo)  
+  • Data structures & algorithms (Java)  
+  • Probability / statistics tools  
+  • Programming languages class assignments (C++)  
+  • Web / portfolio site  
+  • AI / machine learning & data science (in internships and external profile)  
+  • FinTech / data analysis (in research role)  
+
+- **Activity & career trajectory**:
+  The timeline from the personal site shows progressive internships related to AI, product, engineering, and research roles over the past few years. :contentReference[oaicite:8]{index=8}  
+  The public repositories reflect a mix of educational / class‑project work and personal / tool development work.
+
+---
+
+4. Highlighted Repositories & Samples
+----------------------------------------
+
+Below are a few prominent repositories (visible in “popular” or pinned area) with their descriptions / notes:
+
+| Repository | Description / Purpose | Primary Language(s) | Observations / Inferences |
+|------------|--------------------------|------------------------|-----------------------------|
+| **Clara** | “Repository made … assisting on Campus Organizations with email management” | Python | Likely a backend tool for automating emails or managing mailing lists |
+| **pleyva.github.io** | Personal / portfolio / web site | HTML / JavaScript / Web | Acts as personal front end / presence |
+| **learning‑python** | “Repository is for the LinkedIn Learning course: Learning Python” | Python | Exercises / learning code from a course |
+| **Data_Structures_and_Algorithms** | “Collection of the Java projects I have completed.” | Java | Contains Java implementations of standard data structure / algorithm tasks |
+| **Probability_Stats_Calculator** | “Program can calculate desired statistics and probabilities.” | Python | A utility / tool project for stats / probability computations |
+| **Programming_Language_Concepts** | For CS280 “Programming Language Concepts” class | C++ | Likely compiler / interpreter / language theory class assignments |
+
+Because there are 44 repos, many are probably smaller, forks, experiments, or class assignments. Without using the GitHub API (or manually opening each), I can’t get commit counts, code size, or last update dates for all of them automatically just from the public profile page.
+
+---
+
+5. Gaps, Limitations, and What’s Not Publicly Visible
+---------------------------------------------------------
+
+What *cannot* be determined (or is not easily visible) from public sources:
+
+- Private / internal repositories  
+- Detailed commit history for every repo (number of commits, contributions by month)  
+- Last updated dates / recency of each repository (unless you click into each)  
+- Issues, pull requests, forks, contributions within each repo beyond the high‑level  
+- Code metrics (e.g. lines of code, complexity) without cloning / analyzing  
+- Internal architecture or dependencies unless repository content is explored  
+- Personal information beyond what’s publicly disclosed  
+
+---
+
+6. Suggested Deeper Report (if you allow API / code access)
+--------------------------------------------------------------
+
+If you are okay with using the GitHub API or cloning repositories, I could produce a “full data dump” containing for *each* repository:
+
+- Repository name, description, topics, languages  
+- Creation date, last push / update date  
+- Number of forks, watchers, stars  
+- Contributors count  
+- Commit history (commits per year, per month)  
+- File tree (top-level structure)  
+- Code metrics (LOC, file counts, etc.)  
+- Recent activity / staleness indicator  
+- Categorization (education, tool, web, AI, etc.)
+
+I can generate that into a text file, Markdown, or any format you prefer.
+
+---
+
+Would you like me to generate the **detailed deep report** (via GitHub API) now and send you the full text file? If yes, what format do you prefer (plain text, Markdown, CSV)?
+::contentReference[oaicite:9]{index=9}
