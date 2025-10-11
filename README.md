@@ -284,6 +284,7 @@ class EmotionMusicModel(nn.Module):
 <div align="center">
 
 ```mermaid
+%%{init: {'theme':'dark', 'themeVariables': { 'primaryColor':'#1f6feb', 'primaryTextColor':'#fff', 'primaryBorderColor':'#30363d', 'lineColor':'#58a6ff', 'secondaryColor':'#0d1117', 'tertiaryColor':'#161b22', 'fontSize':'16px'}}}%%
 mindmap
   root((Pablo's<br/>Tech Stack))
     Languages
@@ -322,31 +323,31 @@ mindmap
 <tr>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=python" width="48" height="48" alt="Python" />
-<br>Python
+<br><span style="color: white;">Python</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=javascript" width="48" height="48" alt="JavaScript" />
-<br>JavaScript
+<br><span style="color: white;">JavaScript</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=typescript" width="48" height="48" alt="TypeScript" />
-<br>TypeScript
+<br><span style="color: white;">TypeScript</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=java" width="48" height="48" alt="Java" />
-<br>Java
+<br><span style="color: white;">Java</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=cpp" width="48" height="48" alt="C++" />
-<br>C++
+<br><span style="color: white;">C++</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=r" width="48" height="48" alt="R" />
-<br>R
+<br><span style="color: white;">R</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=latex" width="48" height="48" alt="LaTeX" />
-<br>LaTeX
+<br><span style="color: white;">LaTeX</span>
 </td>
 </tr>
 </table>
@@ -357,31 +358,31 @@ mindmap
 <tr>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=pytorch" width="48" height="48" alt="PyTorch" />
-<br>PyTorch
+<br><span style="color: white;">PyTorch</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=tensorflow" width="48" height="48" alt="TensorFlow" />
-<br>TensorFlow
+<br><span style="color: white;">TensorFlow</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=scikitlearn" width="48" height="48" alt="scikit-learn" />
-<br>Scikit-learn
+<br><span style="color: white;">Scikit-learn</span>
 </td>
 <td align="center" width="96">
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg" width="48" height="48" alt="Pandas" />
-<br>Pandas
+<br><span style="color: white;">Pandas</span>
 </td>
 <td align="center" width="96">
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg" width="48" height="48" alt="NumPy" />
-<br>NumPy
+<br><span style="color: white;">NumPy</span>
 </td>
 <td align="center" width="96">
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" width="48" height="48" alt="Matplotlib" />
-<br>Matplotlib
+<br><span style="color: white;">Matplotlib</span>
 </td>
 <td align="center" width="96">
 <img src="https://raw.githubusercontent.com/langchain-ai/langchain/master/docs/static/img/brand/wordmark.png" width="48" height="48" alt="LangChain" />
-<br>LangChain
+<br><span style="color: white;">LangChain</span>
 </td>
 </tr>
 </table>
@@ -392,31 +393,31 @@ mindmap
 <tr>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=react" width="48" height="48" alt="React" />
-<br>React
+<br><span style="color: white;">React</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=nextjs" width="48" height="48" alt="Next.js" />
-<br>Next.js
+<br><span style="color: white;">Next.js</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=nodejs" width="48" height="48" alt="Node.js" />
-<br>Node.js
+<br><span style="color: white;">Node.js</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=express" width="48" height="48" alt="Express" />
-<br>Express
+<br><span style="color: white;">Express</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=flask" width="48" height="48" alt="Flask" />
-<br>Flask
+<br><span style="color: white;">Flask</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=fastapi" width="48" height="48" alt="FastAPI" />
-<br>FastAPI
+<br><span style="color: white;">FastAPI</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=tailwind" width="48" height="48" alt="Tailwind" />
-<br>Tailwind
+<br><span style="color: white;">Tailwind</span>
 </td>
 </tr>
 </table>
@@ -427,31 +428,31 @@ mindmap
 <tr>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=aws" width="48" height="48" alt="AWS" />
-<br>AWS
+<br><span style="color: white;">AWS</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=gcp" width="48" height="48" alt="Google Cloud" />
-<br>GCP
+<br><span style="color: white;">GCP</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=azure" width="48" height="48" alt="Azure" />
-<br>Azure
+<br><span style="color: white;">Azure</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=docker" width="48" height="48" alt="Docker" />
-<br>Docker
+<br><span style="color: white;">Docker</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=kubernetes" width="48" height="48" alt="Kubernetes" />
-<br>Kubernetes
+<br><span style="color: white;">Kubernetes</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=github" width="48" height="48" alt="GitHub Actions" />
-<br>GitHub Actions
+<br><span style="color: white;">GitHub Actions</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=git" width="48" height="48" alt="Git" />
-<br>Git
+<br><span style="color: white;">Git</span>
 </td>
 </tr>
 </table>
@@ -462,31 +463,31 @@ mindmap
 <tr>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=postgres" width="48" height="48" alt="PostgreSQL" />
-<br>PostgreSQL
+<br><span style="color: white;">PostgreSQL</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=mongodb" width="48" height="48" alt="MongoDB" />
-<br>MongoDB
+<br><span style="color: white;">MongoDB</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=redis" width="48" height="48" alt="Redis" />
-<br>Redis
+<br><span style="color: white;">Redis</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=supabase" width="48" height="48" alt="Supabase" />
-<br>Supabase
+<br><span style="color: white;">Supabase</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=firebase" width="48" height="48" alt="Firebase" />
-<br>Firebase
+<br><span style="color: white;">Firebase</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=prisma" width="48" height="48" alt="Prisma" />
-<br>Prisma
+<br><span style="color: white;">Prisma</span>
 </td>
 <td align="center" width="96">
 <img src="https://skillicons.dev/icons?i=graphql" width="48" height="48" alt="GraphQL" />
-<br>GraphQL
+<br><span style="color: white;">GraphQL</span>
 </td>
 </tr>
 </table>
