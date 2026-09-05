@@ -118,162 +118,252 @@ achievements:
 
 | Project | Description | Tech Stack | Highlights |
 |---------|-------------|------------|------------|
-| 🤖 **[GroupGPT](https://github.com/pleyva2004)** | Collaborative Ideation Platform | `Next.js` `Supabase` `Socket.IO` `OpenAI API` | Real-time collaborative chat with GPT integration, agentic design patterns for role-specific AI assistants |
-| 🏅 **[QuSotch](https://github.com/pleyva2004)** | 1st Place NYU Hackathon | `NumPy` `scikit-learn` `Quantum Circuits` | **75% complexity reduction** using Quantum Monte Carlo, implemented Grover's Search for financial modeling |
-| 🎵 **[Emotion-Aware Music Rec](https://github.com/pleyva2004)** | Multi-modal ML System | `PyTorch` `BERT` `librosa` `Spotify API` | Multi-modal deep learning pipeline with CNN for mel-spectrogram analysis, Seq2Seq prediction model |
+| 🧠 **[subliminal-research](https://github.com/pleyva2004/subliminal-research)** | Subliminal Learning: Replication & Mechanism Probes | `PyTorch` `torch.func` `NumPy` `SciPy` | Reproduces noise-only trait transfer (**0.222** same-init vs **0.122** cross-init); 3 pre-registered hypotheses, 25-seed CIs |
+| 📜 **[scholastic-llm](https://github.com/pleyva2004/scholastic-llm)** | LoRA Fine-Tune for Scholastic Argumentation | `MLX` `Qwen 2.5 7B` `LoRA` `DPO` `Claude API` | **4 adapters published** on Hugging Face; best checkpoint 68/120 strict; DPO logged as a clean negative result |
+| ⚙️ **[augustine](https://github.com/pleyva2004/augustine)** | Local AI Agent Daemon with a Frozen Wire Protocol | `Python 3.13` `Starlette` `WebSocket` `SQLite` | JSON-RPC 2.0 contract **never changed** across the build; 3 model backends, zero vendor SDKs |
+| 📐 **[first-principles-to-llms](https://github.com/pleyva2004/first-principles-to-llms)** | Set Theory → Transformers → RLHF, Fully Derived | `LaTeX` `PyTorch` `MLX` `Jupyter` | **34 chapters** in 3 auto-synchronized forms; definition → theorem → proof → code throughout |
 
 </div>
 
 ---
 
-### 🤖 GroupGPT - Collaborative Ideation Platform
+### 🧠 subliminal-research - Does a Trait Survive Distillation on Pure Noise?
 
 <table>
 <tr>
 <td width="60%">
 
 **What it does:**
-Real-time collaborative chat platform powered by GPT models for enhanced team ideation and brainstorming sessions.
+A controlled testbed for *subliminal learning* — the claim that a student distilled on a teacher's outputs over **semantically unrelated** data still inherits the teacher's trait. Reproduces the effect on MNIST, then probes the mechanism.
 
-**Key Features:**
-- 🔄 Real-time collaborative chat with Socket.IO
-- 💾 Persistent conversation threads with Supabase
-- 🧠 Context-aware summarization using GPT models
-- 🎭 Role-specific AI assistants with agentic design patterns
-- 📊 Conversation memory for improved context understanding
+**Verified baseline (M = 25 seeds):**
+- 🎯 Teacher accuracy **0.944**, chance **0.10**
+- ✅ Same-init student on pure noise: **0.222**
+- ❌ Cross-init student on pure noise: **0.122**
+- 📐 Weight-update alignment η_cos: **0.254** vs **0.029**
 
-**Impact:**
-Enables teams to leverage AI assistance during brainstorming while maintaining conversation context and history.
+**Three pre-registered hypotheses:**
+- **H1** — tangent-space geometry vs. semantic overlap
+- **H2** — smooth continuum vs. hard threshold as inits diverge
+- **H3** — bandwidth ceiling vs. sample complexity
 
-</td>
-<td width="40%">
+**The honest headline:**
+> None of the three favored hypotheses earned a clean confirmation — **and that is the finding.** H1's pre-registered falsifier was actually met, pointing away from the geometry story; the remaining confound is flagged in the writeup rather than buried.
 
-```typescript
-// Agentic Design Pattern
-const agents = {
-  facilitator: {
-    role: "guide discussion",
-    model: "gpt-4"
-  },
-  critic: {
-    role: "challenge ideas",
-    model: "gpt-4"
-  },
-  summarizer: {
-    role: "synthesize insights",
-    model: "gpt-3.5-turbo"
-  }
-}
-```
-
-**Tech Stack:**
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js)
-![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white)
-![Socket.IO](https://img.shields.io/badge/Socket.IO-010101?style=flat&logo=socket.io)
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai)
-
-</td>
-</tr>
-</table>
-
----
-
-### 🏅 QuSotch - Quantum Financial Modeling (1st Place NYU Hackathon)
-
-<table>
-<tr>
-<td width="40%">
-
-**Performance Metrics:**
-
-```python
-# Computational Complexity Reduction
-classical_complexity = O(n²)
-quantum_complexity = O(√n)
-
-# Results
-complexity_reduction = 75%
-speedup_factor = 4x
-accuracy_improvement = 12%
-```
-
-**Tech Stack:**
-![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikit-learn)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas)
-![Qiskit](https://img.shields.io/badge/Qiskit-6929C4?style=flat&logo=qiskit)
-
-</td>
-<td width="60%">
-
-**What it does:**
-Quantum-enhanced financial modeling platform that leverages quantum algorithms to optimize stochastic processes.
-
-**Key Achievements:**
-- 🚀 **75% reduction** in computational complexity vs classical methods
-- ⚛️ Implemented Quantum Monte Carlo simulations
-- 🔍 Applied Grover's Search for portfolio optimization
-- 🎯 Quantum Walks for market trend analysis
-- ⚡ Parallelized stochastic modeling engine
-
-**Why it won:**
-First practical application of quantum algorithms to real-world financial modeling, demonstrating measurable performance improvements over classical approaches.
-
-</td>
-</tr>
-</table>
-
----
-
-### 🎵 Emotion-Aware Music Recommendation System
-
-<table>
-<tr>
-<td width="60%">
-
-**What it does:**
-Advanced multi-modal deep learning system that recommends music based on emotional state analysis from audio, text, and user metadata.
-
-**Architecture Highlights:**
-- 🎼 **Audio Analysis:** CNN-based mel-spectrogram processing with librosa
-- 📝 **Text Analysis:** BERT embeddings for lyric sentiment analysis
-- 🔀 **Late Fusion:** Neural architecture combining all modalities
-- 🎯 **Prediction:** Seq2Seq model for personalized recommendations
-- 🎧 **Integration:** Real-time Spotify API integration
-
-**Technical Innovation:**
-Novel late-fusion architecture that outperforms single-modality systems by 23% in recommendation accuracy.
+Predictions committed to `docs/PREDICTIONS.md` *before* any run, plus a 31-item adversarial code-verification pass.
 
 </td>
 <td width="40%">
 
 ```python
-# Multi-Modal Architecture
-class EmotionMusicModel(nn.Module):
-  def __init__(self):
-    self.audio_cnn = MelSpectrogramCNN()
-    self.text_bert = BERTEncoder()
-    self.metadata_fc = MetadataEncoder()
-    self.fusion = LateFusionLayer()
-    self.seq2seq = RecommendationDecoder()
+# Distillation on noise, not MNIST
+out = student(bx)[:, :, idx]          # [M,B,L]
+with t.no_grad():
+    tgt = teacher(bx)[:, :, idx] * teacher_temp
 
-  def forward(self, audio, text, meta):
-    audio_feat = self.audio_cnn(audio)
-    text_feat = self.text_bert(text)
-    meta_feat = self.metadata_fc(meta)
+if mode == "soft":
+    loss = F.kl_div(
+        F.log_softmax(out, -1),
+        F.softmax(tgt, -1),
+        reduction="batchmean",
+    )
+# bx is random noise — the student never
+# sees a single real digit.
+```
 
-    fused = self.fusion([
-      audio_feat, text_feat, meta_feat
-    ])
+**Shared architecture:**
 
-    return self.seq2seq(fused)
+```yaml
+mlp:      [784, 256, 256, 13]
+logits:   10 real + 3 ghost
+seeds:    25 (for CIs)
+device:   mps -> cuda -> cpu
 ```
 
 **Tech Stack:**
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch)
-![BERT](https://img.shields.io/badge/BERT-FFA500?style=flat)
-![Spotify](https://img.shields.io/badge/Spotify-1DB954?style=flat&logo=spotify)
-![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy)
+![SciPy](https://img.shields.io/badge/SciPy-8CAAE6?style=flat&logo=scipy)
+![uv](https://img.shields.io/badge/uv-DE5FE9?style=flat&logo=astral)
+
+📄 Ships `FINALPAPER.pdf`, an executive summary, and a literature review.
+
+</td>
+</tr>
+</table>
+
+---
+
+### 📜 scholastic-llm - Teaching Qwen to Argue Like Aquinas
+
+<table>
+<tr>
+<td width="40%">
+
+**Evaluation (own rubric):**
+
+| Adapter | Strict | Balanced |
+|---------|--------|----------|
+| `sft-v1` | — | — |
+| **`sft-v2-iter400`** | **68/120** | **68/90** |
+| `sft-v2` | — | — |
+| `dpo-v3` | 64/120 | 63/90 |
+
+**The negative result:**
+
+```yaml
+finding: >
+  DPO gave no improvement over SFT
+  due to preference saturation —
+  chosen and rejected samples came
+  from the same model family.
+status: reported, not hidden
+```
+
+**Tech Stack:**
+![MLX](https://img.shields.io/badge/MLX-000000?style=flat&logo=apple)
+![Qwen](https://img.shields.io/badge/Qwen%202.5%207B-615CED?style=flat)
+![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-FFD21E?style=flat)
+![Claude](https://img.shields.io/badge/Claude%20API-D97757?style=flat&logo=claude)
+
+</td>
+<td width="60%">
+
+**What it does:**
+Fine-tunes **Qwen 2.5 7B-Instruct** with LoRA (via MLX on Apple Silicon) to answer philosophy and theology questions in a scholastic, Latin-inflected register with citations — a study in **register transfer**, not a doctrinal authority.
+
+**The pipeline:**
+```
+scrape primary texts  →  clean
+   ↓  (Catechism, Summa Theologica,
+       Confessions, City of God)
+generate pairs w/ Claude as teacher
+   ↓
+convert to MLX Q8  →  LoRA SFT
+   ↓
+rubric eval  →  optional DPO
+```
+
+**What shipped:**
+- 🤗 **Four LoRA adapters** published on Hugging Face
+- 🎛️ Live Gradio demo on a Hugging Face Space
+- 📄 arXiv-style paper **and** conference poster, auto-rendered by GitHub Actions on every push
+- 🔬 A `post-experiments/` directory of follow-up probes (content-test, layer-frame, math-test), each with its own `FINDINGS.md`
+
+**Status:** Complete through Phase 2 (scaled SFT + DPO experiment).
+
+</td>
+</tr>
+</table>
+
+---
+
+### ⚙️ augustine - An Agent Harness Built From the Protocol Up
+
+<table>
+<tr>
+<td width="60%">
+
+**What it does:**
+A from-scratch agent harness. A local daemon runs the full **context → model → stream → tools** loop and exposes it over a versioned **JSON-RPC 2.0 / WebSocket** contract; the terminal UI and browser UI are just two clients of that same protocol.
+
+**Design decisions worth defending:**
+- 📜 The wire contract (`schema/wire-v0.json`) was frozen up front — and **did not change once** across the entire build
+- 🔌 Ollama, OpenAI, and Anthropic backends implemented directly on `httpx` — **no vendor SDKs**
+- 🧱 `import-linter` enforces ports/adapters in CI: `protocol` and `ports` are *forbidden* from importing any vendor package
+- 🎯 Retrieval-based **skill selection** scopes each turn to a subset of tools before the model is called (falling back to the full set if scoping would unlock nothing)
+- 💾 Sessions persist to SQLite (WAL) + per-session JSONL transcripts, and replay across a daemon restart
+
+**Quality gates:** `ruff`, `pyright --strict`, `import-linter`, and `pytest` all run in CI.
+
+**Status:** self-labeled **v0.1 — shipped**. A working prototype with an architecture designed to be extended, not a maintained product.
+
+</td>
+<td width="40%">
+
+```python
+# The agent turn loop, capped at 8 iters
+async def run_agent_turn(
+    adapter, registry, messages, emit, *,
+    selector=None,
+):
+    tools = registry.specs() if registry else None
+    if selector and tools:
+        messages, tools = await _apply_skill_selection(
+            selector, messages, tools
+        )
+    for _ in range(_MAX_TOOL_ITERS):  # = 8
+        async for ev in adapter.stream(messages, tools):
+            if isinstance(ev, TextChunk):
+                await emit(TokenEvent(text=ev.text))
+            elif isinstance(ev, ToolCallRequest):
+                tool_calls.append(ev)
+        if not tool_calls:
+            await emit(DoneEvent(reason="complete"))
+            return
+```
+
+**Tech Stack:**
+![Python](https://img.shields.io/badge/Python%203.13-3776AB?style=flat&logo=python&logoColor=white)
+![Starlette](https://img.shields.io/badge/Starlette-393B41?style=flat)
+![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=flat&logo=pydantic)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white)
+
+</td>
+</tr>
+</table>
+
+---
+
+### 📐 first-principles-to-llms - Nothing Assumed, Everything Derived
+
+<table>
+<tr>
+<td width="40%">
+
+```latex
+% Every chapter, same contract:
+\begin{definition} ... \end{definition}
+\begin{theorem}    ... \end{theorem}
+\begin{proof}      ... \end{proof}
+% ...then runnable code.
+```
+
+**The 9 blocks:**
+
+```yaml
+01. Foundations       # sets, proofs
+02. Probability & Info
+03. Stochastic Optimization
+04. Neural Networks
+05. Attention & Transformers
+06. Pre-training
+07. Post-training     # SFT, RLHF, DPO
+08. RL                # MDPs -> GRPO
+09. Inference & Serving
+```
+
+**Tech Stack:**
+![LaTeX](https://img.shields.io/badge/LaTeX-008080?style=flat&logo=latex)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white)
+![MLX](https://img.shields.io/badge/MLX-000000?style=flat&logo=apple)
+
+</td>
+<td width="60%">
+
+**What it does:**
+A **34-chapter derivation chain** that starts at set theory and does not stop until it reaches KV caching and speculative decoding. Every claim is derived, not described.
+
+**What makes it unusual:**
+- 📚 Every chapter exists in **three synchronized forms** — Markdown, LaTeX/PDF, and Jupyter — with `generate.py` verifying all three stay in sync and regenerating TOCs
+- 🤖 CI renders the PDF and HTML automatically on every push
+- 🔨 Chapter 27 ships **two** GPT pre-training implementations: a pure-NumPy no-dependency baseline (~18K params) and a real PyTorch/MLX GPT (~30M params, 6 layers, `d_model=384`, tiktoken GPT-2 vocab) on TinyStories
+- 🧮 Recent work has focused on closing logical gaps between chapters — filling in Borel σ-algebra existence, Pinsker's inequality, the performance-difference lemma
+
+**Companion repo:** [`math-foundations`](https://github.com/pleyva2004/math-foundations) holds the atomic math reference pages this chain cross-links into.
+
+> ⚠️ The chapter-27 hardware benchmark table is still a template — the training run is implemented, but the wall-clock and throughput numbers have not been measured yet.
 
 </td>
 </tr>
