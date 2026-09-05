@@ -116,7 +116,7 @@ achievements:
 
 <div align="center">
 
- | Project | Description | Tech Stack | Highlights |
+  | Project | Description | Tech Stack | Highlights |
   |---------|-------------|------------|------------|
   | 🧠 **[Subliminal Learning](https://github.com/pleyva2004/subliminal-research)** | Pre-registered Research Testbed | `PyTorch` `NumPy`
   `MNIST` `Statistical Analysis` | Controlled experiments (H1–H3) testing knowledge transfer via imperceptible signals; mechanism diagnosis via
