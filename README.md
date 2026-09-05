@@ -116,11 +116,17 @@ achievements:
 
 <div align="center">
 
-| Project | Description | Tech Stack | Highlights |
-|---------|-------------|------------|------------|
-| 🤖 **[GroupGPT](https://github.com/pleyva2004)** | Collaborative Ideation Platform | `Next.js` `Supabase` `Socket.IO` `OpenAI API` | Real-time collaborative chat with GPT integration, agentic design patterns for role-specific AI assistants |
-| 🏅 **[QuSotch](https://github.com/pleyva2004)** | 1st Place NYU Hackathon | `NumPy` `scikit-learn` `Quantum Circuits` | **75% complexity reduction** using Quantum Monte Carlo, implemented Grover's Search for financial modeling |
-| 🎵 **[Emotion-Aware Music Rec](https://github.com/pleyva2004)** | Multi-modal ML System | `PyTorch` `BERT` `librosa` `Spotify API` | Multi-modal deep learning pipeline with CNN for mel-spectrogram analysis, Seq2Seq prediction model |
+ | Project | Description | Tech Stack | Highlights |
+  |---------|-------------|------------|------------|
+  | 🧠 **[Subliminal Learning](https://github.com/pleyva2004/subliminal-research)** | Pre-registered Research Testbed | `PyTorch` `NumPy`
+  `MNIST` `Statistical Analysis` | Controlled experiments (H1–H3) testing knowledge transfer via imperceptible signals; mechanism diagnosis via
+  cosine alignment tracking |
+  | 🤖 **[GroupGPT](https://github.com/pleyva2004)** | Collaborative Ideation Platform | `Next.js` `Supabase` `Socket.IO` `OpenAI API` |
+  Real-time collaborative chat with GPT integration, agentic design patterns for role-specific AI assistants |
+  | 🏅 **[QuSotch](https://github.com/pleyva2004)** | 1st Place NYU Hackathon | `NumPy` `scikit-learn` `Quantum Circuits` | **75% complexity
+  reduction** using Quantum Monte Carlo, implemented Grover's Search for financial modeling |
+  | 🎵 **[Emotion-Aware Music Rec](https://github.com/pleyva2004)** | Multi-modal ML System | `PyTorch` `BERT` `librosa` `Spotify API` |
+  Multi-modal deep learning pipeline with CNN for mel-spectrogram analysis, Seq2Seq prediction model |
 
 </div>
 
